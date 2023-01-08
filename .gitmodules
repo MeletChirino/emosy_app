@@ -1,0 +1,3 @@
+[submodule "Ryem"]
+	path = Ryem
+	url = git@github.com:MeletChirino/Ryem.git

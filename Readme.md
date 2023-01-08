@@ -23,3 +23,17 @@ y finalmente lo activas con
 sudo systemctl enable my_service
 sudo systemctl start my_service
 ```
+
+## Arduino-cli
+
+Para compilar el sw embebido pdebes ejecutar la sgte linea de codigo
+
+```
+arduino-cli compile --library "C:\Users\cruz_\Documents\emosy_app\Ryem" -v
+arduino-cli compile --library "C:\Users\cruz_\Documents\emosy_app\Ryem" -v -u && stty -F /dev/ttyUSB0 raw 115200 && cat /dev/ttyUSB0
+```
+
+Debiste haber instalado el WifiManager
+```
+arduino-cli lib install WifiManager
+```
