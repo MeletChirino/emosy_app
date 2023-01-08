@@ -1,0 +1,19 @@
+@startuml
+title "Server Authentication"
+participant "ESP8266" as ard
+database "AmazonServer" as server
+ard -> ard : wlan_connection()
+ard -> server : 0x19950407
+note right: My birth date
+server -> server : verify_monitor(mac_addr)
+alt new_monitor
+    server -> server : save_monitor(mac_addr)
+    server --> ard : 0x19990528
+    note right : Pau's birth date
+    ard -> ard : wait_confirmation()
+else old_monitor
+    server --> ard : 0x19730905
+    note right: Dad's birth date
+    ard -> ard : change_state()
+end
+@enduml

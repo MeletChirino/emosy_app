@@ -1,0 +1,17 @@
+@startuml
+[*] -->  S0
+S0 : wifi_connect()
+S1: server_connect()
+S2: sync_clock()
+
+S0 -> S0 : timeout(20)
+S0 -down-> S1 : WifiConnected
+S1 -> S0 : WifiDisconnected
+S1 -down-> S2 : ServerConnected
+S2 -> S1 : ServerDisconnected
+S2 -> S2 : E_20mins
+
+note left of S0: WiFiManager hanldes\neverything
+note left of S1: Sends a message\nto the server\nand wait for response
+note left of S2: Syncs clock every\n20 minutes
+@enduml

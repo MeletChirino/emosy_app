@@ -1,0 +1,12 @@
+@startuml
+[*] -->  S0
+S0 : save_data()
+S0 : stored_data++
+S1 : send_data()
+S0 -down-> S1 : ServerConnected\nsend_stored_data()
+S1 -> S0 : ServerDisconnected
+
+
+note left of S0: This state gets data\nbut store it instead of sending it
+note left of S1: This state gets data\nand send it to the server
+@enduml

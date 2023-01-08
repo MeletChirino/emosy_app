@@ -1,0 +1,78 @@
+@startgantt
+title Electrical Monitor System
+Project starts 2022-09-17
+
+saturday are closed
+sunday are closed
+
+2022-09-17 is opened
+2022-09-18 is opened
+2022-09-28 is closed
+'2022-09-29 is closed
+
+-- Stage 1--
+
+[Viaje] happens at 2022-09-28
+[Mitad del viaje] happens at 2022-10-21
+[Regreso] happens at 2022-11-03
+legend
+Cada una de las actividades aqui presentes incluyen pruebas de funcionamiento y testeo.
+end legend
+caption
+This is the caption
+end caption
+
+[Wifi Manager] lasts 7 days
+then [Receiver Server] lasts 3 days
+then [Set server as service] lasts 2 days
+note bottom
+Esto que solo reciba un numero y devuelva otro
+end note
+
+[Data State Machine] starts at 2022-09-29
+[Data State Machine] lasts 3 days
+
+[Clock Sync and Auth] starts at [Data State Machine]'s end
+[Clock Sync and Auth] starts at [Set server as service]'s end
+[Clock Sync and Auth] lasts 3 days
+note bottom
+Aqui sincronizas el reloj, mandas los datos encriptados y seteas las respuestas 
+posibles del servicio cuando este con django
+end note
+then [Finish Stage 1] lasts 0 day
+-- Stage 2 --
+[Service and Django Integration] starts at [Finish Stage 1]'s end
+[Service and Django Integration] lasts 5 days
+note bottom
+Meter el servicio en una app de django con su respectivo view,
+sus models y su autenticacion
+end note
+
+[Build First Prototype] starts at [Finish Stage 1]'s end
+[Build First Prototype] lasts 8 days
+
+[Test Local System] starts at [Build First Prototype]'s end
+[Test Local System] starts at [Service and Django Integration]'s end
+[Test Local System] lasts 4 days
+note bottom
+Aqui pruebas todo en la casa con una lampara o con algo mas en la casa.
+Arregla y pon fino todo lo que puede estar fallando.
+end note
+
+then [Finish Stage 2] lasts 0 day
+-- Stage 3 --
+[Upload Service to the cloud] starts at [Finish Stage 2]'s end
+[Upload Service to the cloud] lasts 3 days
+note bottom
+Aqui tambien se incluye testear con el prototipo
+en el hotel
+end note
+
+[Create PCB] starts at [Finish Stage 2]'s end
+[Create PCB] lasts 3 days
+
+[Manufacture] starts at [Create PCB]'s end
+[Manufacture] ends at 2022-11-02
+
+then [Finish Stage 3] lasts 0 day
+@endgantt
