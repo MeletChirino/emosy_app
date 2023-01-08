@@ -37,3 +37,5 @@ Debiste haber instalado el WifiManager
 ```
 arduino-cli lib install WifiManager
 ```
+
+Tambien puedes usar el comando `compile` que hace que todo sea mucho mas facil para ti. Puedes agregar `-v` o `-u` como argumentos para tener mas opciones de debug por si quieres montar el archivo enseguida.
