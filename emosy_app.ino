@@ -6,6 +6,7 @@
 #include "NetworkStateMachine.h"
 #include "RyemTime.h"
 #include "DataStateMachine.h"
+#include "RyemMux.h"
 
 void clock_tick();
 void show_time();
@@ -37,6 +38,9 @@ Task ServerConnectionTask(MINS(1), server_connection, true);
 Task ClockSyncTask(MINS(1), clock_sync, true);
 Task ClockTickTask(1000, clock_tick);
 
+// --------------- Mux ---------------
+RyemMux EmosyMux({1, 2, 3, 4, 5}, 6);
+
 status_type g_status;
 
 auto serial_instance = Serial;
@@ -45,6 +49,10 @@ void setup() {
   Serial.begin(115200);
   g_status.stored_data = 0;
   g_status.uid = get_monitor_id();
+
+  // Mux init
+  EmosyMux.set_input_n(24);
+  EmosyMux.init();
 
   // Event init
   WLANConnected.init(1);
@@ -66,6 +74,7 @@ void setup() {
   NetSM.attach_event(&ServerConnected);
   NetSM.attach_event(&ServerDisconnected);
   wifi_connection();
+
 }
 
 void loop() {
