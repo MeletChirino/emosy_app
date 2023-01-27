@@ -39,3 +39,20 @@ arduino-cli lib install WifiManager
 ```
 
 Tambien puedes usar el comando `compile` que hace que todo sea mucho mas facil para ti. Puedes agregar `-v` o `-u` como argumentos para tener mas opciones de debug por si quieres montar el archivo enseguida.
+
+Para instalar la tarjeta tienes que seguir los sgtes pasos:
+- Ejectuar `arduino-cli config init` en la terminal. Esto te va a decir que se 
+escribio en un archivo `arduino-cli.yaml`
+
+- Vas a ese archivo y agregas esto:
+```yaml
+board_manager:
+  additional_urls: [http://arduino.esp8266.com/stable/package_esp8266com_index.json]
+```
+
+- Ahora vuelves a la terminal para ejecutar lo sgte:
+```
+arduino-cli core update-index
+arduino-cli core install esp8266:esp8266
+``
+Cuando haya terminado ya tienes la libreria instalada. Me gustaria mas tenerla yo mismo aqui en el repo, igual que el WifiManager pero eso lo hare despues.
