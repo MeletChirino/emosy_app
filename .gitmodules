@@ -1,3 +1,6 @@
 [submodule "Ryem"]
 	path = Ryem
 	url = git@github.com:MeletChirino/Ryem.git
+[submodule "WiFiManager"]
+	path = WiFiManager
+	url = https://github.com/tzapu/WiFiManager
